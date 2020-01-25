@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TextInput, TouchableOpacity, BackHandler } from 'react-native';
 import { Icon, Left, Body, Right } from 'native-base';
 import {WebView} from "react-native-webview"
+import RNExitApp from 'react-native-exit-app';
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -11,6 +12,21 @@ const instructions = Platform.select({
 
 
 export default class App extends Component {
+
+
+  componentWillMount(){   
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+}
+
+componentWillUnmount(){ 
+    BackHandler.removeEventListener('hardwareBackPress',this.handleBackButton)
+}
+
+
+handleBackButton = () => {
+ RNExitApp.exitApp()
+// return true
+} 
   state={
     currentURL:""
   }
@@ -48,7 +64,7 @@ export default class App extends Component {
           </Body>
 
           <Right style={{  flex: 0.2, alignItems: 'center' }}>
-              <TouchableOpacity onPress={() => BackHandler.exitApp()}>
+              <TouchableOpacity onPress={this.handleBackButton}>
 
             <Icon
               name="close"
@@ -97,12 +113,14 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   topView:{
-     height: 50, 
+     height: Platform.OS == "ios" ? 80 :  50, 
      backgroundColor: '#1a2b48', 
      flexDirection: 'row', 
      justifyContent: "space-between", 
      width: '100%',
-     position:'relative'
+     alignItems:'flex-end',
+     position:'relative',
+     paddingTop:Platform.OS === "ios" ? 22 : 0
     
     },
     lefticon:{

@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TextInput, TouchableOpacity, BackHandler } from 'react-native';
+import { Platform, StyleSheet, Text, View, TextInput, TouchableOpacity, BackHandler ,Dimensions} from 'react-native';
 import { Icon, Left, Body, Right } from 'native-base';
 import {WebView} from "react-native-webview"
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
+const {height} = Dimensions.get("screen")
 
 export default class App extends Component {
   state={
@@ -32,9 +27,9 @@ export default class App extends Component {
           </Left>
           <Body style={{justifyContent:'center'}}>
 
-            <View style={styles.webView}>
+            {/* <View style={styles.webView}>
               <Text style={{paddingLeft:5,width:'100%',height:22}}>{this.state.currentURL && this.state.currentURL}</Text>
-            </View>
+            </View> */}
             {/* <TextInput
               placeholderTextColor="black"
       
@@ -84,7 +79,7 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: "100%",
+    height: height/1.19,
   },
   welcome: {
     fontSize: 20,
@@ -97,7 +92,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   topView:{
-     height: 50, 
+     height: 40, 
      backgroundColor: '#1a2b48', 
      flexDirection: 'row', 
      justifyContent: "space-between", 

@@ -27,19 +27,7 @@ export default class App extends Component {
           </Left>
           <Body style={{justifyContent:'center'}}>
 
-            {/* <View style={styles.webView}>
-              <Text style={{paddingLeft:5,width:'100%',height:22}}>{this.state.currentURL && this.state.currentURL}</Text>
-            </View> */}
-            {/* <TextInput
-              placeholderTextColor="black"
-      
-              placeholder={this.state.currentURL && this.state.currentURL}
-              numberOfLines={1}
-            
-              editable={false}
-              ref={webview => { this.myWebview = webview; }}
-              
-            /> */}
+       
           </Body>
 
           <Right style={{  flex: 0.2, alignItems: 'center' }}>
